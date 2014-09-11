@@ -23,7 +23,7 @@ python setup.py install
 
 ## Configuration
 
-Create a `server.ini` file in the `/conf/` directory.  Refer to `default.ini` for options and a
+Create a `local.ini` file in the `/conf/` directory.  Refer to `default.ini` for options and a
 description of each configuration option.
 
 
