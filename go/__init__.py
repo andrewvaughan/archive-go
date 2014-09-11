@@ -1,5 +1,8 @@
 import ConfigParser, os
 
+from bottle import route, run, template
+
+
 # from go import Go
 
 
@@ -14,4 +17,13 @@ config.readfp(open(conf_dir + '/default.ini'))
 config.read([conf_dir + '/local.ini'])
 
 
-# go = Go()
+# Setup our redirect routes
+@route('/<route>')
+def route(route):
+    return 
+
+
+run(
+    host = config.get('server', 'host'),
+    port = config.get('server', 'port')
+)
