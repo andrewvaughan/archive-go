@@ -1,6 +1,6 @@
 import ConfigParser, os
 
-from bottle import route, error, response, run
+from bottle import route, error, static_file, response, run
 
 
 # from go import Go
@@ -26,7 +26,7 @@ def error404(error):
 # Registration
 @route('/')
 def register():
-    return "TBD"
+    return static_file('index.html', root = script_dir + '/templates')
 
 @route('/', method = 'POST')
 def register_do():

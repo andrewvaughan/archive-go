@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GO</title>
+        
+        <style>
+            body, html {
+                margin: 10px;
+                background: #eeffff;
+                font: 14px Helvetica, sans-serif;
+            }
+            
+            label {
+                display: block;
+                text-align: center;
+            }
+            
+            input {
+                display: block;
+                margin: 0 auto 10px;
+            }
+            
+            input[type=text] {
+                background: white; 
+                
+                border: 1px solid #DDD; 
+                border-radius: 5px; 
+                box-shadow: 0 0 5px #DDD inset; 
+                
+                color: #666; 
+                
+                outline: none; 
+                
+                width: 200px;
+                height: 25px;
+                
+                padding: 0 5px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <form method="POST">
+            <label for="url">URL to Shorten:</label>
+            <input id="url" name="url" type="text" required />
+            
+            <label for="vanity">Vanity Address (optional):</label>
+            <input id="vanity" name="vanity" type="text" />
+            
+            <input type="submit" value="Shorten URL" />
+        </form>
+        
+    </body>
+</html>
