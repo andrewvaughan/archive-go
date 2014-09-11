@@ -6,7 +6,7 @@ implementation of a URL service, providing only a basic, RESTful API and the URL
 
 ## Dependencies
 
-1. **[python 2.7](https://www.python.org/download/releases/2.7/)
+1. **[python 2.7](https://www.python.org/download/releases/2.7/)**
 1. **[bottle](http://bottlepy.org/)** a lightweight web framework
 1. **[redis](http://redis.io/)** a key-value cache and store
 
