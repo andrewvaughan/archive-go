@@ -34,7 +34,7 @@ def register():
 # Redirections
 @route('/<route>')
 def route(route):
-    url = go.get(route)
+    url = go.fetch(route)
     
     if not url:
         response.status = "404 Not Found"

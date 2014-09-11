@@ -17,7 +17,7 @@ class Go:
         Base64 encoded MD5 hash of the URL.
         """
         return base64.b64encode(
-            md5.new(url).digest()[-6:]).replace('=','').replace('/','_')
+            md5.new(url).digest()[-6:].replace('=','').replace('/','_')
         )
         
         
@@ -52,7 +52,7 @@ class Go:
             return None
     
     
-    def lookup(self, hash):
+    def fetch(self, hash):
         """
         Returns a URL for a given hash, or None if the hash does not exist.
         """
