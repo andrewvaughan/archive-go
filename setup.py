@@ -15,14 +15,5 @@ setup(
         'bottle == 0.12.7',
         'redis == 2.10.3'
     ],
-    scripts = ['bin/go'],
-    classifiers = [
-        'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3'
-    ],
-    zip_safe = False
+    scripts = ['bin/go']
 )
