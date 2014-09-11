@@ -4,9 +4,6 @@ from bottle import route, error, static_file, request, response, redirect, run
 from go import Go
 
 
-go = Go()
-
-
 # Load our useful paths
 script_dir = os.path.dirname(os.path.realpath(__file__))
 conf_dir = os.path.realpath(script_dir + '/../conf')
@@ -18,10 +15,14 @@ config.readfp(open(conf_dir + '/default.ini'))
 config.read([conf_dir + '/local.ini'])
 
 
+# Initialize GO
+go = Go(config = config)
+
+
 # 404 Error
 @error(404)
 def error404(error):
-    return "Redirect not found."
+    return static_file('404.html', root = script_dir + '/templates')
 
 
 # Registration
@@ -37,7 +38,7 @@ def route(route):
     
     if not url:
         response.status = "404 Not Found"
-        return "Redirect not found"
+        return static_file('404.html', root = script_dir + '/templates')
     
     return redirect(url)
 
