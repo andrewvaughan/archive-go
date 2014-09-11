@@ -37,7 +37,7 @@ def register_do():
     url = request.forms.get('url')
     vanity = request.forms.get('vanity')
     
-    return go.register(url, vanity)
+    return config.get('go', 'url') + go.register(url, vanity)
 
 
 # Redirections

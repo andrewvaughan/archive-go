@@ -19,7 +19,7 @@ class Go:
         Base64 encoded MD5 hash of the URL.
         """
         return base64.b64encode(
-            md5.new(url).digest()[-6:].replace('=', '').replace('/', '_')
+            md5.new(url).digest().replace('=', '').replace('/', '_')[-6:]
         )
         
         
