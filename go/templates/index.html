@@ -20,7 +20,7 @@
                 margin: 0 auto 10px;
             }
             
-            input[type=text] {
+            input[type=text], input[type=url] {
                 background: white; 
                 
                 border: 1px solid #DDD; 
@@ -42,10 +42,10 @@
         
         <form method="POST">
             <label for="url">URL to Shorten:</label>
-            <input id="url" name="url" type="text" required />
+            <input id="url" name="url" type="url" required />
             
             <label for="vanity">Vanity Address (optional):</label>
-            <input id="vanity" name="vanity" type="text" />
+            <input id="vanity" name="vanity" type="text" maxlength="25" />
             
             <input type="submit" value="Shorten URL" />
         </form>
