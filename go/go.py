@@ -1,5 +1,7 @@
 import redis
 import base64
+import md5
+
 
 class Go:
     def __init__(self, config = []):
@@ -17,16 +19,16 @@ class Go:
         Base64 encoded MD5 hash of the URL.
         """
         return base64.b64encode(
-            md5.new(url).digest()[-6:].replace('=','').replace('/','_')
+            md5.new(url).digest()[-6:].replace('=', '').replace('/', '_')
         )
         
         
-    def shorten(self, url, vanity = None):
+    def register(self, url, vanity = None):
         """
-        Shortening method that will hash and return a shortcode for a given URL.
-        Will attempt to use a vanity URL if one is provided, and it has not
-        already been used.  If the vanity URL has been used, a random hash will
-        be returned.
+        Registration method that will hash and return a shortcode for a given
+        URL.  Will attempt to use a vanity URL if one is provided, and it has
+        not already been used.  If the vanity URL has been used, a random hash
+        will be returned.
         
         On the rare collision, a previous hash will be evicted.
         
@@ -34,8 +36,11 @@ class Go:
         """
         prefix = self.config.get('redis', 'prefix')
         
-        if (vanity):
+        if (vanity and vanity != ''):
             test = self.redis.get(prefix + vanity)
+            
+            if test == url:
+                return vanity
             
             if not test:
                 self.redis.set(prefix + vanity, url)
@@ -57,7 +62,9 @@ class Go:
         Returns a URL for a given hash, or None if the hash does not exist.
         """
         try:
-            return self.redis.get(self.config.get('redis', 'prefix') + hash)
+            return self.redis.get(
+                self.config.get('redis', 'prefix') + hash
+            )
             
         except:
             return None

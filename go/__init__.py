@@ -31,6 +31,15 @@ def register():
     return static_file('index.html', root = script_dir + '/templates')
 
 
+# Register call
+@route('/', method = "POST")
+def register_do():
+    url = request.forms.get('url')
+    vanity = request.forms.get('vanity')
+    
+    return go.register(url, vanity)
+
+
 # Redirections
 @route('/<route>')
 def route(route):
