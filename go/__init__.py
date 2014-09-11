@@ -1,6 +1,6 @@
 import ConfigParser, os
 
-from bottle import route, run, template
+from bottle import route, error, response, run
 
 
 # from go import Go
@@ -17,10 +17,28 @@ config.readfp(open(conf_dir + '/default.ini'))
 config.read([conf_dir + '/local.ini'])
 
 
-# Setup our redirect routes
+# 404 Error
+@error(404)
+def error404(error):
+    return "Redirect not found."
+
+
+# Registration
+@route('/')
+def register():
+    return "TBD"
+
+@route('/', method = 'POST')
+def register_do():
+    url = request.forms.get('url')
+    return "TBD"
+
+
+# Redirections
 @route('/<route>')
 def route(route):
-    return 
+    response.status = "404 Not Found"
+    return "Redirect not found"
 
 
 run(
