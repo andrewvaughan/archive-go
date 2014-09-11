@@ -1,7 +1,8 @@
 # GO
 
 Go is a URL shortening service written in Python.  It is intended to be a very bare-bones
-implementation of a URL service, providing only a basic, RESTful API and the URL forwarding service.
+implementation of a URL service, providing only a basic, RESTful API, a simple registraton page,
+and the URL forwarding service.
 
 
 ## Dependencies
