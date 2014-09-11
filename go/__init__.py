@@ -1,9 +1,10 @@
 import ConfigParser, os
 
-from bottle import route, error, static_file, response, run
+from bottle import route, error, static_file, request, response, redirect, run
+from go import Go
 
 
-# from go import Go
+go = Go()
 
 
 # Load our useful paths
@@ -28,17 +29,17 @@ def error404(error):
 def register():
     return static_file('index.html', root = script_dir + '/templates')
 
-@route('/', method = 'POST')
-def register_do():
-    url = request.forms.get('url')
-    return "TBD"
-
 
 # Redirections
 @route('/<route>')
 def route(route):
-    response.status = "404 Not Found"
-    return "Redirect not found"
+    url = go.get(route)
+    
+    if not url:
+        response.status = "404 Not Found"
+        return "Redirect not found"
+    
+    return redirect(url)
 
 
 run(
